@@ -7,10 +7,10 @@ const FormStyles = styled.form`
   justify-content: space-between;
   background-color: white;
   max-width: 70%;
+  width: 70%;
   height: auto;
 
   margin: 0 auto;
-  margin-top: 20%;
 
   border-radius: 5px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -89,7 +89,7 @@ export default function Form() {
   return (
     <FormStyles>
       <InputStyles>
-        <label htmlFor="originalUrl">URL:</label>
+        <label htmlFor="originalUrl">URL</label>
         <input
           type="url"
           placeholder="https://google.com/"
