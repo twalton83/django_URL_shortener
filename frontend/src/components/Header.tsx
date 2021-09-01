@@ -6,14 +6,16 @@ export const HeaderStyles = styled.header`
   flex-direction: row;
   align-items: center;
 
-  background-color: white;
+  background-color: #070747;
+  color: white;
+
   height: 7vh;
   box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
 
   padding: 0 16px;
 
   h1 {
-    font-weight: 300;
+    font-weight: 400;
   }
 `;
 
