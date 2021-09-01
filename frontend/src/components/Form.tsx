@@ -52,10 +52,13 @@ const InputStyles = styled.div`
   input {
     height: 100%;
     width: 100%;
+
     border: none;
+
     font-size: 24px;
     line-height: 30px;
     vertical-align: middle;
+    text-indent: 10px;
 
     &&::-webkit-input-placeholder {
       font-size: 30px;
