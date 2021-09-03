@@ -54,6 +54,7 @@ const InputStyles = styled.div`
     width: 100%;
 
     border: none;
+    border-radius: 5px;
 
     font-size: 24px;
     line-height: 30px;
@@ -70,18 +71,7 @@ const InputStyles = styled.div`
   }
 
   label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    font-size: 32px;
-
-    width: 33%;
-
-    background-color: #070747;
-    color: white;
-    height: 100%;
-    border-radius: 5px 0px 0px 5px;
+    display: none;
   }
 `;
 
@@ -92,7 +82,7 @@ export default function Form() {
         <label htmlFor="originalUrl">URL</label>
         <input
           type="url"
-          placeholder="https://google.com/"
+          placeholder="Insert your URL here..."
           name="originalUrl"
           id="url"
           autoFocus
