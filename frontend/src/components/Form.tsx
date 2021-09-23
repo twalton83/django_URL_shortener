@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, { FormEvent, FormEventHandler, useState } from "react";
 import styled from "styled-components";
 
 const FormStyles = styled.form`
@@ -76,11 +77,25 @@ const InputStyles = styled.div`
 `;
 
 export default function Form() {
+  const [url, setUrl] = useState("");
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    axios
+      .post(process.env.REACT_APP_BACKEND_URL!, {
+        url,
+      })
+      .then((res) => res.data)
+      .then(({ message }) => console.log(message));
+  };
+
   return (
-    <FormStyles>
+    <FormStyles onSubmit={handleSubmit}>
       <InputStyles>
         <label htmlFor="originalUrl">URL</label>
         <input
+          onChange={(e) => setUrl(e.target.value)}
+          value={url}
           type="url"
           placeholder="Insert your URL here..."
           name="originalUrl"
