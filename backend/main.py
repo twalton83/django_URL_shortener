@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from validate_url import validate_url
 
-class URL(BaseModel) :
+
+class URL(BaseModel):
     url: str
 
 
@@ -16,6 +18,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.post("/")
-async def urlSubmit(url : URL):
-    return {"message": "The URL submitted is " + url.url}
+async def urlSubmit(url: URL):
+    if validate_url(url):
+        return {"message": "The URL submitted is " + url.url}
+    else:
+        return {"message": "Not a valid URL"}
