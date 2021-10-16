@@ -1,5 +1,5 @@
 import express = require("express");
-import { check } from "express-validator";
+import { check, validationResult } from "express-validator";
 
 const app = express();
 const cors = require("cors");
@@ -10,8 +10,15 @@ app.use(bodyParser.urlencoded());
 
 app.use(bodyParser.json());
 
-app.post("/", check("url").isURL(), (req, res) => {
-  res.send(`The submitted URL is: ${req.body.url}`);
+app.post("/", async (req, res) => {
+  await check("url").isURL().run(req);
+  const result = validationResult(req);
+
+  if (result.isEmpty()) {
+    res.send(`The submitted URL is: ${req.body.url}`);
+  } else {
+    res.send("Not a valid URL.");
+  }
 });
 
 app.listen(8000, () => {
