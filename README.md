@@ -1,5 +1,5 @@
 # lilliput.ly
 
-A URL shortener made with React and Python (via Fast API).
+A URL shortener made with React and NodeJS with Typescript.
 
 The site background was created at [SVGBackgrounds.com](https://svgbackgrounds.com/).
