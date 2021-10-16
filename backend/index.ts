@@ -17,10 +17,8 @@ app.post("/", async (req, res) => {
   if (result.isEmpty()) {
     res.send(`The submitted URL is: ${req.body.url}`);
   } else {
-    res.send("Not a valid URL.");
+    res.status(500).send("Not a valid URL.");
   }
 });
 
-app.listen(8000, () => {
-  console.log("Server is live on" + process.env.PORT);
-});
+export default app;
