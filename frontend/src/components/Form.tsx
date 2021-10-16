@@ -85,8 +85,7 @@ export default function Form() {
       .post(process.env.REACT_APP_BACKEND_URL!, {
         url,
       })
-      .then((res) => res.data)
-      .then(({ message }) => console.log(message));
+      .then((res) => console.log(res.data));
   };
 
   return (
