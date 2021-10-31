@@ -1,5 +1,7 @@
 import express = require("express");
 import { check, validationResult } from "express-validator";
+import { URL } from "../models/URL";
+import generateLink from "../utils";
 
 const app = express();
 const cors = require("cors");
@@ -19,6 +21,20 @@ app.post("/", async (req, res) => {
   } else {
     res.status(500).send("Not a valid URL.");
   }
+
+ const existingUrl = await URL.find({ originalUrl: req.body.url});
+
+ if(!existingUrl){
+  const newUrl = new URL({
+    originalUrl: req.body.url,
+    newUrl: generateLink()
+  })
+
+  newUrl.save()
+ }
+
+
+
 });
 
 export default app;

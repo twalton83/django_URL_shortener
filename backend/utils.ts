@@ -5,3 +5,4 @@ export default function generateLink(){
 
   return rootURL + id
 }
+
