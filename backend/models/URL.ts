@@ -1,10 +1,16 @@
 import mongoose from 'mongoose';
 const {Schema} = mongoose;
 
-const urlSchema = new Schema({
+interface Url {
+  originalUrl: string;
+  shortenedUrl: string;
+  date: DateConstructor;
+}
+
+const urlSchema = new Schema<Url>({
   originalUrl: String,
   shortenedUrl: String,
-  date: {type: Date, default: Date.now}
+  date: {type: Date, default: Date}
 })
 
-export const URLModel = mongoose.model('URL', urlSchema)
+export const URLModel = mongoose.model<Url>('URL', urlSchema)
