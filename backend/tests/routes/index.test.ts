@@ -1,6 +1,6 @@
 const request = require("supertest");
 const express = require("express");
-import app from "../../index";
+import app from "../../routes/index";
 
 describe("URL route", () => {
   it("sends a 200 if the URL is valid", async () => {
