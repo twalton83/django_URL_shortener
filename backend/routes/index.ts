@@ -1,6 +1,6 @@
 import express = require("express");
 import { check, validationResult } from "express-validator";
-import { URL } from "../models/URL";
+import { URLModel } from "../models/URL";
 import generateLink from "../utils";
 
 const app = express();
@@ -31,6 +31,8 @@ app.post("/", async (req, res) => {
   })
 
   newUrl.save()
+ } else {
+   res.send(existingUrl.shortenedUrl)
  }
 
 

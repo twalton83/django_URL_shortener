@@ -7,4 +7,4 @@ const urlSchema = new Schema({
   date: {type: Date, default: Date.now}
 })
 
-export const URL = mongoose.model('URL', urlSchema)
+export const URLModel = mongoose.model('URL', urlSchema)
