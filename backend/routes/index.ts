@@ -17,26 +17,23 @@ app.post("/", async (req, res) => {
   const result = validationResult(req);
 
   if (result.isEmpty()) {
-    res.send(`The submitted URL is: ${req.body.url}`);
+    const existingUrl = await ShortenedURL.findOne({ originalUrl: req.body.url });
+    if (!existingUrl) {
+      const newUrl = new ShortenedURL({
+        originalUrl: req.body.url,
+        shortenedUrl: generateLink()
+      })
+
+      newUrl.save()
+      res.send(200)
+    } else {
+      console.log('This is already present in the db!')
+      console.log(existingUrl.shortenedUrl)
+      res.send(existingUrl.shortenedUrl)
+    }
   } else {
     res.status(500).send("Not a valid URL.");
   }
-
- const existingUrl = await ShortenedURL.findOne({ originalUrl: req.body.url});
-
- if(!existingUrl){
-  const newUrl = new ShortenedURL({
-    originalUrl: req.body.url,
-    newUrl: generateLink()
-  })
-
-  newUrl.save()
- } else {
-   res.send(existingUrl.shortenedUrl)
- }
-
-
-
 });
 
 export default app;

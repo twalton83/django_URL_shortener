@@ -1,5 +1,4 @@
-import mongoose, { Document } from 'mongoose';
-const {Schema, model} = mongoose;
+import { model, Schema, Document } from 'mongoose';
 
 interface ShortenedUrl extends Document{
   originalUrl: string;
@@ -14,4 +13,4 @@ const schema = new Schema<ShortenedUrl>({
 })
 
 
-export const ShortenedURL = mongoose.model<ShortenedUrl>('URL', schema)
+export const ShortenedURL = model<ShortenedUrl>('URL', schema)
