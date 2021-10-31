@@ -13,4 +13,4 @@ const urlSchema = new Schema<Url>({
   date: {type: Date, default: Date}
 })
 
-export const URLModel = mongoose.model<Url>('URL', urlSchema)
+export const Url = mongoose.model<Url>('URL', urlSchema)
