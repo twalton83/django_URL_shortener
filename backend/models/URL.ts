@@ -1,16 +1,17 @@
-import mongoose from 'mongoose';
-const {Schema} = mongoose;
+import mongoose, { Document } from 'mongoose';
+const {Schema, model} = mongoose;
 
-interface Url {
+interface ShortenedUrl extends Document{
   originalUrl: string;
   shortenedUrl: string;
   date: DateConstructor;
 }
 
-const urlSchema = new Schema<Url>({
+const schema = new Schema<ShortenedUrl>({
   originalUrl: String,
   shortenedUrl: String,
   date: {type: Date, default: Date}
 })
 
-export const Url = mongoose.model<Url>('URL', urlSchema)
+
+export const ShortenedURL = mongoose.model<ShortenedUrl>('URL', schema)

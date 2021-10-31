@@ -1,6 +1,6 @@
 import express = require("express");
 import { check, validationResult } from "express-validator";
-import { Url } from "../models/URL";
+import { ShortenedURL } from "../models/URL";
 import generateLink from "../utils";
 
 const app = express();
@@ -22,10 +22,10 @@ app.post("/", async (req, res) => {
     res.status(500).send("Not a valid URL.");
   }
 
- const existingUrl = await Url.find({ originalUrl: req.body.url});
+ const existingUrl = await ShortenedURL.findOne({ originalUrl: req.body.url});
 
  if(!existingUrl){
-  const newUrl = new Url({
+  const newUrl = new ShortenedURL({
     originalUrl: req.body.url,
     newUrl: generateLink()
   })
